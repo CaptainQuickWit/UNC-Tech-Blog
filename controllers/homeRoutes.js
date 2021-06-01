@@ -8,11 +8,7 @@ const router = require('express').Router();
 // this renders the main page when user first gets to website
 router.get('/', (req, res) => {
   //add sessions later 
-
-
   res.render('home');
 });
-
-// For the "RESULTS" PAGE ('/results') Can we use the homepage.handlebars?
 
 module.exports = router; 

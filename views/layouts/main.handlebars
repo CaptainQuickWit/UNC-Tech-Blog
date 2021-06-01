@@ -8,13 +8,35 @@
   <title>testing testing</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
 
+    <!--style tag for testing only will remove in final draft -->
+    <style>
+      * { border: 1px solid blue; }
+    </style>
 </head>
 
 <body>
+  <!-- this is the header -->
   <div>
-      <main class="container-fluid">
+    <!-- this is the nav bar -->
+    <div class="container-fluid py-5" style="background-color:#522921">
+      <nav class="ml-1">
+                <a href="#">Home</a>
+                <a href="#">Dasbboard</a>
+                <a href="#">Login</a>
+                <a href="#">Logout</a> <!--will add helper later for the login/logout -->
+      </nav>
+
+      <div class="container-fluid my-1">
+        <h1 style="color:bisque">The Tech blog</h1>
+      </div>
+    </div>
+  
+  </div>
+
+  <!--main content-->
+  <div>
+      <main class="container-fluid bg-white">
         {{{ body }}}
       </main>
   </div>
