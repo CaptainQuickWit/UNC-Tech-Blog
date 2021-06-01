@@ -1,0 +1,38 @@
+{
+  "name": "mesh",
+  "version": "1.0.0",
+  "description": "CMS-style blog where developers can create their own posts as well as comment on other developer's content. This project demonstrates the Model View Controller paradigm utilizing handlebars.js, Sequelize, and express-session npm package.  This is Homework# 14 for the UNC full stack development bootcamp.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "granim": "^2.0.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "prettier": "^2.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaptainQuickWit/UNC-Tech-Blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CaptainQuickWit/UNC-Tech-Blog/issues"
+  },
+  "homepage": "https://github.com/CaptainQuickWit/UNC-Tech-Blog#readme"
+}
