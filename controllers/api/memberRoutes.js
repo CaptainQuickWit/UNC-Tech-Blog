@@ -16,16 +16,19 @@ router.post('/', async (req, res) => {
       
     });
 
-// Set up sessions with a 'loggedIn' variable set to `true`
+  // Set up sessions later with a 'loggedIn' variable set to `true` 
+  // the code for the sessions will go here
     
   } catch (err) {
     console.log("your code failed ==> /controlers/api/memberRoutes line 13 or close");
     console.log(err);
     res.status(500).json(err);
   }
+  
+  res.status(200);
 });
 
-// MESH LOGIN
+// login to the blog
 router.post('/login', async (req, res) => {
   try {
     const memberData = await Member.findOne({ where: { username: req.body.username } });
@@ -33,7 +36,8 @@ router.post('/login', async (req, res) => {
     if (!memberData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'wrong user or password, please try again' });
+      console.log("no good memberRoutes.js file username for login fail");
       return;
     }
 
@@ -42,38 +46,20 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'wrong user or password, please try again' });
+        //what used to be in the .json: { message: 'wrong user or password, please try again' }
+        //.status(400);
+        console.log("no good memberRoutes.js file username for login fail");
       return;
     }
 
-    req.session.save(() => {
-      req.session.member_id = memberData.id;
-      req.session.username = memberData.username;
-      req.session.logged_in = true;
-      
-      res.json({ member: memberData, message: 'You are now logged in!' });
-    });
+    //add code for sessions here later
 
   } catch (err) {
     res.status(400).json({ message: 'No user account found!' });
   }
+  
 });
 
-// MESH LOGOUT
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
-});
-
-// DELETE existing mesh member with "Member" model
-// TO ASK !!!! member page has no id will it affect this?
-
-
-// WE WILL ADD AN UPDATE ACCOUNT ROUTE HERE!
 
 module.exports = router; 
