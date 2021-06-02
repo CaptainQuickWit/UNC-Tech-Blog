@@ -1,52 +1,49 @@
 <section class="d-flex justify-content-center m-5">
     
 
-    <!-- this code below is simply is copy and paste from my mesh project and was written by me. however only using it temporarily
-    as buttons do not work so i can focus on bigger picture stuff and will write my own custom code later-->
-    <main class="container-fluid" >
+   
+    <main class="container-fluid">
       <!-- All of our views will be placed in that place holder "body" and rendered -->
     <div class="row">
       <!-- this flex column is to help center the login -->
-      <div class="col-md-6">
-        <div class="d-flex justify-content-center">
-          <h2>Login</h2>
-          <form class="form login-form">
-            <div class="form-group">
-              <label for="username-login">Username:</label>
-              <input class="form-input" type="text" id="username-login" />
+      <div class="col-12">
+        <!--these two lines of code ensure that the element's will fill the entire width-->
+      
+      
+
+        
+        <div class="d-block" style="border: 4px solid #522921">
+          <h3 class = "px-3"style="background-color:#522921; color: white;">Login</h3>
+          <form class="form login-form px-3 py-1">
+            <div class="form-group m-0 px-3 py-1">
+              <label for="username">Username:</label>
+              <input class="form-input" type="text" id="username" />
             </div>
-            <div class="form-group">
-              <label for="password-login">Password:</label>
-              <input class="form-input" type="password" id="password-login" />
+            <div class="form-group m-0 px-3 py-1">
+              <label for="password">Password:</label>
+              <input class="form-input" type="password" id="password" />
             </div>
-            <div class="form-group">
+            <div class="form-group m-0 px-3 py-1">
               <button class="btn btn-primary" type="submit">Login</button>
             </div>
+            
           </form>
+          <div class="d-flex justify-content-left px-3 py-1" >
+         
+            <form class="form signup-form">
+              <div class="form-group">
+                <button class="btn btn-primary" type="submit">Sign-up</button>
+              </div>
+            </form>
+            </div>
         </div>
+
+
       </div>
-      <!-- the sign up form-->
-      <div class="col-md-6 px-0 mx-0">
-        <div class="d-flex justify-content-center">
-          <h2>Signup</h2>
-          <form class="form signup-form">
-            <div class="form-group">
-              <label for="username-signup">Username:</label>
-              <input class="form-input" type="text" id="username-signup" />
-            </div>
-            <div class="form-group">
-              <label for="password-signup">Password:</label>
-              <input class="form-input" type="password" id="password-signup" />
-            </div>
-          
-            <div class="form-group">
-              <button class="btn btn-primary" type="submit">Sign-up</button>
-            </div>
-          </form>
-        </div>
       </div>
-      <!-- this main tag contains entire content of the login cards-->
-    </div>
+
+
+
   </main>
 
     
