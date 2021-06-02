@@ -2,81 +2,48 @@
     
 
    
-    <main class="container-fluid">
-      <!-- All of our views will be placed in that place holder "body" and rendered -->
-    <div class="row">
-      <!-- this flex column is to help center the login -->
-      <div class="col-12">
-        <!--these two lines of code ensure that the element's will fill the entire width-->
-      
-      
-
-        
-        <div class="d-block" style="border: 4px solid #522921">
-          <h3 class = "px-3"style="background-color:#522921; color: white;">Login</h3>
-          <form class="form login-form px-3 py-1">
-            <div class="form-group m-0 px-3 py-1">
-              <label for="username">Username:</label>
-              <input class="form-input" type="text" id="username" />
-            </div>
-            <div class="form-group m-0 px-3 py-1">
-              <label for="password">Password:</label>
-              <input class="form-input" type="password" id="password" />
-            </div>
-            <div class="form-group m-0 px-3 py-1">
-              <button class="btn btn-primary" type="submit">Login</button>
-            </div>
-            
-          </form>
-          <div class="d-flex justify-content-left px-3 py-1" >
-         
-            <form class="form signup-form">
-              <div class="form-group">
-                <button class="btn btn-primary" type="submit">Sign-up</button>
-              </div>
-            </form>
-            </div>
-        </div>
-
-
-      </div>
-      </div>
-
-
-
-  </main>
 
     
-    <!--  !!!!!add this code at very end remove code above in final product!!!!
     <div class="container-fluid">
-    <section class="d-flex flex-column justify-content-between">
+    <section class="d-flex flex-column justify-content-between" style="border: 4px solid #522921">
 
     
     <h3 style="background-color:#522921; color: white">Login</h3>
-
-    
+    <!--this div below is just for spacing only -->
+    <div class="mx-4">
+      <!--this div above is just for spacing only -->
       <form class="form login-form" id="login-form">
+        
         <div class="form-group">
           <label for="username-login">Username:</label>
-            <input class="form-input" type="text" id="username-signup" />
+            <input class="form-input container-fluid" type="text" id="username" />
         </div>
-          <div class="form-group">
-            <label for="password-login">Password:</label>
-            <input class="form-input" type="password" id="password-signup" />
-          </div>
- 
-          <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white" type="submit">Login!</button>
-            
-            
-        </form>
+        
+        
 
-        <div class="form-group my-3" id="signUp-form">
-              <button class="btn btn-primary" type="submit">Sign-up</button>
-            </div>
+       
+        <div class="form-group" >
+            <label for="password-login">Password:</label>
+            <input class="form-input container-fluid" type="password" id="password"/>
+        </div>
+        
+        <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit">Login!</button>
+            
+            
+      </form>
+
+      <form class="form submit-form" id="submit-form">
+        <div class="form-group my-3">
+
+          <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit" id="signup-button">Sign up instead</button>
+        </div>
+      </form>
+        
     
+    </div>
     </section>
     </div>
-    -->
+    
 
 </section>
 
