@@ -15,6 +15,18 @@ router.get('/login', (req, res) => {
 });
 */
 
+// RENDERS THE DASHBOARD HANDLEBARS FILE
+router.get('/dashboard', (req, res) => {
+  console.log('redirected to dashboard ', req.session.logged_in);
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+  //{logged_in: false}
+  res.render('dashboard', {logged_in: req.session.logged_in});
+});
+
+
 router.get('/', (req, res) => {
   //add sessions later 
   console.log("it worked");
