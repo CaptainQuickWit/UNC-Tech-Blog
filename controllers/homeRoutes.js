@@ -15,16 +15,41 @@ router.get('/login', (req, res) => {
 });
 */
 
-// RENDERS THE DASHBOARD HANDLEBARS FILE
-router.get('/dashboard', (req, res) => {
-  console.log('redirected to dashboard ', req.session.logged_in);
+router.get('/newpost', (req,res) => {
+  
+    
+    res.render('newpost');
+    return;
+
+  
+});
+
+router.get('/dashboard', (req,res) => {
   if (req.session.logged_in) {
-    res.redirect('/');
+    
+    res.render('dashboard', {logged_in: req.session.logged_in});
+
+      
+    
+    
     return;
   }
   //{logged_in: false}
-  res.render('dashboard', {logged_in: req.session.logged_in});
+  //res.render('login');
+  res.redirect('/');
 });
+
+/*
+router.get('/dashboard', (req, res) => {
+  console.log('redirected to dashboard ', req.session.logged_in);
+  if (req.session.logged_in) {
+    res.render('dashboard', {logged_in: req.session.logged_in});
+    return;
+  }
+  //{logged_in: false}
+  console.log("req.session.logged_in: " + req.session.logged_in + "you were not logged in and redirected to home page");
+  res.redirect('/');
+}); */
 
 
 router.get('/', (req, res) => {
@@ -86,5 +111,17 @@ router.get('/login', (req, res) => {
   //{logged_in: false}
   res.render('login');
 });
+
+router.post('/dashboard', (req,res) => {
+  if (req.session.logged_in) {
+    
+    
+    return;
+  }
+  //{logged_in: false}
+  res.render('login');
+});
+
+
 
 module.exports = router; 

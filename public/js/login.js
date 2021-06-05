@@ -27,6 +27,8 @@ const loginFormHandler = async (event) => {
 
 // code for user to sign up and make a unc-tech-blog account 
 const signupFormHandler = async (event) => {
+
+
   event.preventDefault();
 
   const username = document.querySelector('#username').value.trim();

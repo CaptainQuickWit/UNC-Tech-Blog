@@ -19,7 +19,7 @@ const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-const asession = {
+const sess = {
   secret: 'the only secrets are the ones that never existed in the first place',
   cookie: {},
   resave: false,
@@ -32,7 +32,7 @@ const asession = {
 // session here refers to the express-session package and it commands express app to use the object we created above:
 
 
-app.use(session(asession));
+app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

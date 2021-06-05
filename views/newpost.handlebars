@@ -1,0 +1,44 @@
+<div class="d-flex flex-column justify-content-center m-5" "style: min-height: 200px;">
+    <!-- clicking on add new post on the dashboards page will render a create new post form by javascript adding elements-->
+
+    <p>YOU ARE ON NEWPOST PAGE </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, recusandae omnis, sunt excepturi consectetur illo sequi quidem qui animi placeat neque amet nulla deleniti architecto, adipisci praesentium error et? Velit.</p>
+    <section id="main">
+        
+        <form action="#" style="text-align:center;">
+        <!-- Type of Element -->
+        <label for="type">
+            Add Element Type
+        </label>
+  
+        <input type="text" id="type" 
+            placeholder="Like: div, h1, li...." 
+            value="li" />
+        <br /><br />
+  
+        <!-- Text/Value for the element --->
+        <label for="value">
+            Add Element Value
+        </label>
+  
+        <input type="text" id="value" 
+            placeholder="Like: Hello GeeksForGeeks" 
+            value="CHILD 2" />
+        <br /><br />
+  
+        <!-- Submit the Form -->
+        <button type="button" 
+            onClick="addItem()">
+            Add
+        </button>
+    </form>
+    </section>
+    
+        <!-- else render posts member has -->
+        
+   
+    <button id="newPost" class="btn-no-style">+ New Post</button>
+    
+</div>
+
+<script src="./js/dashboard.js"></script>
