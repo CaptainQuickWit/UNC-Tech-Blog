@@ -19,6 +19,16 @@ router.post('/', async (req, res) => {
   }
 });*/
 
+
+
+router.post('/edit', async (req, res) => {
+  //res.render('editpost');
+  res.redirect('/newpost');
+});
+
+
+
+
 router.post('/', async (req, res) => {
   /*
   this code tests to ensure route is working and front end is sending the data afor the blog
