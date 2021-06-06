@@ -40,14 +40,16 @@ router.post('/', async (req, res) => {
       password: req.body.password,
       
     });
+
   // Set up sessions later with a 'loggedIn' variable set to `true` 
   // the code for the sessions will go here
+  res.render('dashboard', {logged_in: req.session.logged_in});
   } catch (err) {
     console.log("your code failed ==> /controlers/api/memberRoutes line 13 or close");
     console.log(err);
     res.status(500).json(err);
   }
-  res.status(200);
+  
 });
 
 router.post('/logout', (req, res) => {

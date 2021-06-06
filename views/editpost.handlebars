@@ -1,0 +1,45 @@
+<div class="d-flex flex-column justify-content-center m-5" "style: min-height: 200px;">
+    <!-- clicking on add new post on the dashboards page will render a create new post form by javascript adding elements-->
+    
+    
+    
+    
+    <div class="container-fluid">
+    <section class="d-flex flex-column justify-content-between" style="border: 4px solid #522921">
+    <h3 style="background-color:#522921; color: white">Edit Post</h3>
+    <!--this div below is just for spacing only -->
+    <div class="mx-4">
+      <!--this div above is just for spacing only -->
+      <form class="form login-form" id="update">
+        
+        <div class="form-group">
+          <label>Title:</label>
+            <input class="form-input container-fluid" type="text" id="title" />
+        </div>
+
+        <label>Content:</label>
+        <div class="form-group" >
+            <!--<label>Content:</label>-->
+            <!--<input class="form-input container-fluid" type="text" id="content"/>-->
+            <textarea class = "container-fluid"rows="5" id="content"></textarea>
+        </div>
+        
+        <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit">Update</button>   
+        
+      </form>
+
+      <form class="form submit-form" >
+        <div class="form-group my-3"id="delete">
+          <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="click">Delete</button>
+        </div>
+      </form>
+
+    </div>
+    </section>
+    </div>
+        
+    
+    <script src="./js/editpost.js"></script>
+    <!--<button id="newPost" class="btn-no-style">+ New Post</button>-->
+    
+</div>

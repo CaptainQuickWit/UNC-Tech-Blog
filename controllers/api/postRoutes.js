@@ -41,6 +41,7 @@ router.post('/', async (req, res) => {
       member_username: req.session.username,
       
     });
+    res.status(200);
   // Set up sessions later with a 'loggedIn' variable set to `true` 
   // the code for the sessions will go here
   } catch (err) {

@@ -44,7 +44,25 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/');
+
+
+
+      // if account is created make second request to log in
+      const response = await fetch('/api/members/login', {
+       method: 'POST',
+        body: JSON.stringify({ username, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (response.ok) {
+        document.location.replace('/dashboard'); // if sucessful user will be redirected to home page 
+      } else {
+        console.log("your code failed for the login button. check ou ./js/login.js line 14")
+        alert(response.statusText);
+      }
+
+
+
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
