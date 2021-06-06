@@ -12,6 +12,33 @@
     <!--style tag for testing only will remove in final draft -->
     <style>
       * { border: 1px solid blue; }
+      
+      #logout {
+      align-items: normal;
+      background-color: rgba(0,0,0,0);
+      border-color: rgb(0, 0, 238);
+      border-style: none;
+      box-sizing: content-box;
+      color:#1E90FF; 
+      cursor: pointer;
+      display: inline;
+      font: inherit;
+      height: auto;
+      padding: 0;
+      perspective-origin: 0 0;
+      text-align: start;
+      transform-origin: 0 0;
+      width: auto;
+      -moz-appearance: none;
+      -webkit-logical-height: 1em; /* Chrome ignores auto, so we have to use this hack to set the correct height  */
+      -webkit-logical-width: auto; /* Chrome ignores auto, but here for completeness */
+    }
+    a {
+        color: #1E90FF;
+      }
+    a:hover { color:#00008B; text-decoration: none; font-weight: none }
+    #logout:hover { color:#00008B; }
+
     </style>
 </head>
 
@@ -24,8 +51,13 @@
                 <a href="./">Home</a>
                 <a href="./dashboard" id = "dashboard">Dasbboard</a>
                 {{#if logged_in}}
-                <button id="logout" class="btn-no-style">Logout</button>
+                <!--<button id="logout" class="btn-no-style"><a href="./">Logout</a></button>-->
+                <!--<a href="./" id="logout">Logout</a>-->
                 
+                <button id="logout"class="btn-no-style">Logout</button>
+                
+                
+                <script src="/js/logout.js"></script>
                 {{else}}
                 <a href="./login">Login</a> <!--will add helper later for the login/logout -->
                 {{/if}}
