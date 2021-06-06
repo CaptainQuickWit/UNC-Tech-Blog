@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
   res.status(500).json(err);
   }*/
   
-  
+
   try {
     const newPost = await Post.create({
       title: req.body.title,
@@ -68,7 +68,7 @@ router.post('/', async (req, res) => {
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-  res.redirect('/newpost');
+  res.redirect('/dashboard');
 });
 
 

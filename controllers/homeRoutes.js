@@ -7,76 +7,31 @@ const { Member,Post} = require('../models');
 //bring in auth later
 //bring in models later 
 
-//this code so far is mostly boiler plate code to build the skeleton of the website adding basic functionality before
-//adding things like login/out and ORM
-
-// this renders the main page when user first gets to website
-/*
-router.get('/login', (req, res) => {
-  //add sessions later 
-  console.log("it worked");
-  res.render('login');
-});
-*/
 
 router.get('/newpost', (req,res) => {
   
     
-    //res.render('newpost', {logged_in: req.session.logged_in});
     
-    if (req.session.logged_in) {
     
-      res.render('newpost', {logged_in: req.session.logged_in});
-      //console.log("yes");
+  if (req.session.logged_in) {
+    
+    res.render('newpost', {logged_in: req.session.logged_in});
+      
         
       
       
-      return;
-    }
-    //{logged_in: false}
-    //res.render('login');
-    res.redirect('/');
+    return;
+  }
+    
+  res.redirect('/');
   
 });
-/* default route that works, remove if other get dashboards works
-router.get('/dashboard', (req,res) => {
-  if (req.session.logged_in) {
-    
-    res.render('dashboard', {logged_in: req.session.logged_in});
 
-      
-    
-    
-    return;
-  }
-  //{logged_in: false}
-  //res.render('login');
-  res.redirect('/');
-});*/
-
-/*
-router.get('/dashboard', (req, res) => {
-  console.log('redirected to dashboard ', req.session.logged_in);
-  if (req.session.logged_in) {
-    res.render('dashboard', {logged_in: req.session.logged_in});
-    return;
-  }
-  //{logged_in: false}
-  console.log("req.session.logged_in: " + req.session.logged_in + "you were not logged in and redirected to home page");
-  res.redirect('/');
-}); */
-
-/* default route that works. if other route get / works delete this
-router.get('/', (req, res) => {
-  //add sessions later 
-  console.log("it worked");
-  res.render('home', {logged_in: req.session.logged_in});
-});*/
 router.get('/', async (req, res) => {
   try {
     // Get all posts and JOIN with  data
     const postData = await Post.findAll({
-      // attributes: { exclude: ['call_description', 'offer_description'] },
+      // attributes: { exclude: ['???', '???'] },
       include: [
         {
           model: Member,
@@ -84,9 +39,9 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    // Serialize data so the template can read it. This is the "posts" we use at meshboard.handlebars. 
+    // Serialize data so the template can read it. This is the "posts" we use at 
     const posts = postData.map((post) => post.get({ plain: true }));
-    res.render('dashboard', {
+    res.render('home', { //changed from dashboard to home
       posts,
       logged_in: req.session.logged_in
     });
@@ -105,7 +60,9 @@ router.get('/dashboard', async (req, res) => {
   try {
     // Get all posts and JOIN with  data
     const postData = await Post.findAll({
-      // attributes: { exclude: ['call_description', 'offer_description'] },
+      where: {
+        member_id: req.session.member_id,
+      },
       include: [
         {
           model: Member,
@@ -113,7 +70,13 @@ router.get('/dashboard', async (req, res) => {
         },
       ],
     });
-    // Serialize data so the template can read it. This is the "posts" we use at meshboard.handlebars. 
+    
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    //console.log("member_id: "+member_id);
+    console.log("req.session.member_id: "+ req.session.member_id);
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    const allPosts = postData.map((post) => post.get({ plain: true }));
+    
     const posts = postData.map((post) => post.get({ plain: true }));
     res.render('dashboard', {
       posts,
