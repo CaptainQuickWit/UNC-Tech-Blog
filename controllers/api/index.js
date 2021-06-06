@@ -5,6 +5,7 @@ const router = require('express').Router();
 
 router.use('/members', memberRoutes);
 router.use('/post', postRoutes);
+router.use('/comment', postRoutes);
 //router.use('/comment',commmentRoutes);
 
 module.exports = router;

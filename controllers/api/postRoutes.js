@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Card } = require('../../models');
+
 
 const { Post } = require('../../models');
 
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
   res.status(500).json(err);
   }*/
   
-
+  
   try {
     const newPost = await Post.create({
       title: req.body.title,
