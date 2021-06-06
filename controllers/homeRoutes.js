@@ -18,9 +18,20 @@ router.get('/login', (req, res) => {
 router.get('/newpost', (req,res) => {
   
     
-    res.render('newpost', {logged_in: req.session.logged_in});
-    return;
-
+    //res.render('newpost', {logged_in: req.session.logged_in});
+    
+    if (req.session.logged_in) {
+    
+      res.render('newpost', {logged_in: req.session.logged_in});
+      //console.log("yes");
+        
+      
+      
+      return;
+    }
+    //{logged_in: false}
+    //res.render('login');
+    res.redirect('/');
   
 });
 

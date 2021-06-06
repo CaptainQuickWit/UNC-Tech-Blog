@@ -1,21 +1,23 @@
 //this event viewer watch's if member hits the new post button
 
-var mainEl = document.getElementById("main");
+//var mainEl = document.getElementById("main");
 
 const dashboardFormHandler = async (event) => {
-   
+  console.log("!!!!!made it to dashboard formhandler!!!!");
+  event.preventDefault();
+  /*
   const response = await fetch('/newpost', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
   if (response.ok) {
-    console.log("the rendering newpost worked");
+    console.log("!!!!!the rendering newpost worked!!!!");
     document.location.replace('/newpost'); // if sucessful user will be redirected to newpost page where they can make a post
   } else {
     alert(response.statusText);
-  }
+  }*/
             
-  
+  document.location.replace('/newpost');
 
 };
 
@@ -52,9 +54,10 @@ const dashboardFormHandler = async (event) => {
 
 
 
-
-
-const loginFormHandler = async (event) => {
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//login form is really for the create button ignore the name
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!
+const createFormHandler = async (event) => {
   //prevents default form behavior from happening
   event.preventDefault();
 
@@ -70,7 +73,7 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      document.location.replace('/newpost');
+      document.location.replace('/dashboard');
     } else {
       console.log("your code failed for the create button. check out ./js/dashboard.js line 65");
       alert(response.statusText);
@@ -95,11 +98,16 @@ const loginFormHandler = async (event) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
 
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//login form is really for the create button ignore the name
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  document
+  .querySelector('#create')
+  .addEventListener('submit', createFormHandler);
+
+  /* this is not used
 document
   .querySelector('.submit-form')
-  .addEventListener('submit', signupFormHandler);
+  .addEventListener('submit', signupFormHandler);*/
 
