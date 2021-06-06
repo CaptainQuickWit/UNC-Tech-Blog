@@ -3,17 +3,18 @@ const editFormHandler = async (event) => {
   //prevents default form behavior from happening
   event.preventDefault();
 
+
   const title="yes";
   const content="yes";
   if (title && content) {
     // Send a POST request to the api 
-    const response = await fetch('/api/post/', {
-      method: 'POST',
-      body: JSON.stringify({ title, content }),
+    const response = await fetch('/editpost', {
+      method: 'GET',
+      //body: JSON.stringify({ title, content }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      document.location.replace('/dashboard');//check this 
+      document.location.replace('/editpost');//check this 
     } else {
       console.log("your code failed for the create button. check out ./js/dashboard.js line 65");
       alert(response.statusText);
@@ -24,15 +25,6 @@ const editFormHandler = async (event) => {
   document
     .querySelector('#main')
     .addEventListener('click', editFormHandler);
-
-
-
-
-
-
-
-
-
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

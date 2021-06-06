@@ -2,6 +2,44 @@
 
 //var mainEl = document.getElementById("main");
 
+const editFormHandler = async (event) => {
+    //prevents default form behavior from happening
+    event.preventDefault();
+
+    const title="yes";
+    const content="yes";
+    if (title && content) {
+      // Send a POST request to the api 
+      const response = await fetch('/editpost', {
+        method: 'POST',
+        body: JSON.stringify({ title, content }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (response.ok) {
+          console.log("!!!!!!!!!!!!!!");
+          console.log("response: "+response);
+          console.log("!!!!!!!!!!!!!!");
+        document.location.replace('/editpost');//check this 
+      } else {
+        console.log("your code failed for the create button. check out ./js/dashboard.js line 65");
+        alert(response.statusText);
+      }
+    }
+  };
+  
+
+document
+  .querySelector('#main')
+  .addEventListener('click', editFormHandler);
+
+  
+document
+.querySelector('#update')
+.addEventListener('click', updateFormHandler);
+  
+
+
+
 const updateFormHandler = async (event) => {
     console.log("!!!!!made it to dashboard formhandler!!!!");
     event.preventDefault();

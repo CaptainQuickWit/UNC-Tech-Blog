@@ -7,12 +7,41 @@ const { Member,Post} = require('../models');
 //bring in auth later
 //bring in models later 
 
+router.post('/editpost', (req,res) => {
 
-router.get('/newpost', (req,res) => {
+
+
+  if (req.session.logged_in) {
+    
+    console.log("!!!!!rendering!!!!!!"); 
+    
+    res.render('editpost', {logged_in: req.session.logged_in});
+    
+    return;
+  }
+
+  res.redirect('/');
   
-    
-    
-    
+});
+
+router.get('/editpost', (req,res) => {
+
+
+  
+  if (req.session.logged_in) {
+   console.log("!!!!!rendering!!!!!!"); 
+    res.render('editpost', {logged_in: req.session.logged_in});  
+    return;
+  }
+
+  res.redirect('/');
+  
+});
+
+
+router.post('/newpost', (req,res) => {
+  
+
   if (req.session.logged_in) {
     
     res.render('newpost', {logged_in: req.session.logged_in});
