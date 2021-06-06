@@ -1,43 +1,42 @@
 <div class="d-flex flex-column justify-content-center m-5" "style: min-height: 200px;">
     <!-- clicking on add new post on the dashboards page will render a create new post form by javascript adding elements-->
-
-    <p>YOU ARE ON NEWPOST PAGE </p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, recusandae omnis, sunt excepturi consectetur illo sequi quidem qui animi placeat neque amet nulla deleniti architecto, adipisci praesentium error et? Velit.</p>
-    <section id="main">
-        
-        <form action="#" style="text-align:center;">
-        <!-- Type of Element -->
-        <label for="type">
-            Add Element Type
-        </label>
-  
-        <input type="text" id="type" 
-            placeholder="Like: div, h1, li...." 
-            value="li" />
-        <br /><br />
-  
-        <!-- Text/Value for the element --->
-        <label for="value">
-            Add Element Value
-        </label>
-  
-        <input type="text" id="value" 
-            placeholder="Like: Hello GeeksForGeeks" 
-            value="CHILD 2" />
-        <br /><br />
-  
-        <!-- Submit the Form -->
-        <button type="button" 
-            onClick="addItem()">
-            Add
-        </button>
-    </form>
-    </section>
     
-        <!-- else render posts member has -->
+    
+    
+    
+    <div class="container-fluid">
+    <section class="d-flex flex-column justify-content-between" style="border: 4px solid #522921">
+    <h3 style="background-color:#522921; color: white">Create New Post</h3>
+    <!--this div below is just for spacing only -->
+    <div class="mx-4">
+      <!--this div above is just for spacing only -->
+      <form class="form login-form" id="login-form">
         
-   
-    <button id="newPost" class="btn-no-style">+ New Post</button>
+        <div class="form-group">
+          <label>Title:</label>
+            <input class="form-input container-fluid" type="text" id="title" />
+        </div>
+      
+        <div class="form-group" >
+            <label>Content:</label>
+            <input class="form-input container-fluid" type="text" id="content"/>
+        </div>
+        <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit" id="create">Create</button>   
+        
+      </form>
+
+      <form class="form submit-form" id="submit-form">
+        <div class="form-group my-3">
+          <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit" id="newPost">+ New Post</button>
+        </div>
+      </form>
+
+    </div>
+    </section>
+    </div>
+        
+    
+    <!--<button id="newPost" class="btn-no-style">+ New Post</button>-->
     
 </div>
 

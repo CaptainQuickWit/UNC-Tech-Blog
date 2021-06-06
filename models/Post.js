@@ -16,15 +16,18 @@ Post.init(
       references: {
         model: 'member',
         key: 'id',
-      },
+      }
+      
     },
+    
     member_username: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue:'Anonymous',
     }, 
     date_created: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      //allowNull: false,
       defaultValue: DataTypes.NOW,
     },
     title: {

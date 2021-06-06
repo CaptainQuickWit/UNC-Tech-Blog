@@ -18,7 +18,7 @@ router.get('/login', (req, res) => {
 router.get('/newpost', (req,res) => {
   
     
-    res.render('newpost');
+    res.render('newpost', {logged_in: req.session.logged_in});
     return;
 
   
@@ -82,6 +82,7 @@ router.get('/blogpost', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 // RENDERS member.handlebars
 router.get('/member', withAuth, async (req, res) => {
   console.log('/member route hit. Logged in: ', req.session.logged_in);
