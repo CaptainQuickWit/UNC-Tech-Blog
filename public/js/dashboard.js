@@ -1,4 +1,4 @@
-
+/*
 const editFormHandler = async (event) => {
   //prevents default form behavior from happening
   event.preventDefault();
@@ -24,7 +24,7 @@ const editFormHandler = async (event) => {
 
   document
     .querySelector('#main')
-    .addEventListener('click', editFormHandler);
+    .addEventListener('click', editFormHandler);*/
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,10 +44,12 @@ const editFormHandler = async (event) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+//this code is for the new post button
 const dashboardFormHandler = async (event) => {
   console.log("!!!!!made it to dashboard formhandler!!!!");
   event.preventDefault();
-  /*
+  
   const response = await fetch('/newpost', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -57,9 +59,9 @@ const dashboardFormHandler = async (event) => {
     document.location.replace('/newpost'); // if sucessful user will be redirected to newpost page where they can make a post
   } else {
     alert(response.statusText);
-  }*/
+  }
             
-  document.location.replace('/newpost');
+  //document.location.replace('/newpost');
 
 };
 
@@ -97,10 +99,10 @@ const dashboardFormHandler = async (event) => {
 
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//login form is really for the create button ignore the name
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//this code is for the create button on the dashboard page
 const createFormHandler = async (event) => {
   //prevents default form behavior from happening
+  console.log("made it to createformhandler");
   event.preventDefault();
 
   const title = document.querySelector('#title').value.trim();
@@ -115,12 +117,16 @@ const createFormHandler = async (event) => {
     });
     if (response.ok) {
       document.location.replace('/dashboard');//check this 
+      console.log("response for the create button is ok redirecting to dashboard page");
     } else {
       console.log("your code failed for the create button. check out ./js/dashboard.js line 65");
       alert(response.statusText);
     }
   }
 };
+document
+.querySelector('#create')
+.addEventListener('submit', createFormHandler);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,9 +149,7 @@ const createFormHandler = async (event) => {
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //login form is really for the create button ignore the name
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  document
-  .querySelector('#create')
-  .addEventListener('submit', createFormHandler);
+ 
 
   /* this is not used
 document

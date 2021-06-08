@@ -39,7 +39,7 @@ router.get('/editpost', (req,res) => {
 });
 
 
-router.post('/newpost', (req,res) => {
+router.get('/newpost', (req,res) => {
   
 
   if (req.session.logged_in) {
@@ -146,6 +146,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//this is for t/s delete when finished
 router.post('/dashboard', (req,res) => {
   if (req.session.logged_in) {
     

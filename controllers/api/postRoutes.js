@@ -40,7 +40,10 @@ router.post('/', async (req, res) => {
   } catch (err) {
   res.status(500).json(err);
   }*/
-  
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!entered the api/post route !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
+   
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
 
   try {
     const newPost = await Post.create({
@@ -51,7 +54,7 @@ router.post('/', async (req, res) => {
       member_username: req.session.username,
       
     });
-    res.status(200);
+    //res.status(200);
   // Set up sessions later with a 'loggedIn' variable set to `true` 
   // the code for the sessions will go here
   } catch (err) {
@@ -59,6 +62,10 @@ router.post('/', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!made it past the try catch  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
+   
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
 
   const postData = await Post.findOne({ where: { 
     title: req.body.title,
