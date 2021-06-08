@@ -1,4 +1,4 @@
-/*
+
 const editFormHandler = async (event) => {
   //prevents default form behavior from happening
   event.preventDefault();
@@ -24,7 +24,7 @@ const editFormHandler = async (event) => {
 
   document
     .querySelector('#main')
-    .addEventListener('click', editFormHandler);*/
+    .addEventListener('click', editFormHandler);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
