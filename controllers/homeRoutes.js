@@ -6,7 +6,7 @@ const { Member,Post} = require('../models');
 
 //bring in auth later
 //bring in models later 
-let varPostID;
+var varPostID;
 router.post('/editpost', (req,res) => {
 
 
@@ -44,6 +44,7 @@ router.get('/newpost', (req,res) => {
   
 
   if (req.session.logged_in) {
+    
     
     res.render('newpost', {logged_in: req.session.logged_in});
       

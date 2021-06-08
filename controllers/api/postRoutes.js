@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 
 const { Post } = require('../../models');
-
+var varPostId;
 /*
 router.post('/', withAuth, async (req, res) =>
 router.post('/', async (req, res) => {
@@ -18,15 +18,72 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });*/
+/*
+let varPostID;
+router.post('/editpost', (req,res) => {
 
 
 
-router.post('/edit', async (req, res) => {
+  if (req.session.logged_in) {
+    
+    console.log("!!!!!rendering!!!!!!"); 
+    varPostID = req.body.postid;
+    console.log("varpostid=====>" + varPostID); 
+    res.render('editpost', {logged_in: req.session.logged_in});
+    
+    return;
+  }
+
+  res.redirect('/');
+  
+});*/
+
+
+router.post('/edit/', async (req, res) => {
   //res.render('editpost');
-  res.redirect('/newpost');
+  varPostId = req.body.postid;
+  console.log("varpostid====>"+varPostId);
+  res.render('editpost');
 });
 
 
+router.put('/edit/', async (req, res) => {
+  //res.render('editpost');
+
+  try {
+    Post.update(
+      {
+        // All the fields you can update and the data attached to the request body.
+        title: req.body.title,
+        post_content: req.body.content,
+        
+        
+        
+        
+      },
+      {
+        // Gets a book based on the book_id given in the request parameters
+        where: {
+          id: varPostId,
+        },
+      }
+    )
+      .then((updatedPost) => {
+        
+        res.json(updatedPost);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+  
+
+});
 
 
 router.post('/', async (req, res) => {
@@ -43,7 +100,7 @@ router.post('/', async (req, res) => {
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!entered the api/post route !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
    
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
 
   try {
     const newPost = await Post.create({

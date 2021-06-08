@@ -40,21 +40,24 @@ document
   
 
 
-
+//work here
 const updateFormHandler = async (event) => {
     console.log("!!!!!made it to dashboard formhandler!!!!");
     event.preventDefault();
-    /*
-    const response = await fetch('/newpost', {
-      method: 'GET',
+    const title = document.querySelector('#title').value.trim();
+    const content = document.querySelector('#content').value.trim();
+    
+    const response = await fetch('/api/post/edit', {
+      method: 'PUT',
+      body: JSON.stringify({ title, content }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      console.log("!!!!!the rendering newpost worked!!!!");
-      document.location.replace('/newpost'); // if sucessful user will be redirected to newpost page where they can make a post
+      console.log("!!!!!the editing the post worked!!!!");
+      document.location.replace('/dashboard'); // if sucessful user will be redirected to newpost page where they can make a post
     } else {
       alert(response.statusText);
-    }*/
+    }
               
     document.location.replace('/dashboard');
   

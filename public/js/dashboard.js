@@ -13,7 +13,7 @@ const editFormHandler = async (event) => {
   const content="yes";
   if (title && content) {
     // Send a POST request to the api 
-    const response = await fetch('/editpost', {
+    const response = await fetch('/api/post/edit/', {
       method: 'POST',
       body: JSON.stringify({ postid }),
       headers: { 'Content-Type': 'application/json' },
