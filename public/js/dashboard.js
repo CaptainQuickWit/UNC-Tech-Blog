@@ -3,14 +3,19 @@ const editFormHandler = async (event) => {
   //prevents default form behavior from happening
   event.preventDefault();
 
+  let element = event.target;
+  console.log("status: "+ element);
+  var postid = element.getAttribute("data-postid");
+      console.log("getAttribute: "+postid);
+
 
   const title="yes";
   const content="yes";
   if (title && content) {
     // Send a POST request to the api 
     const response = await fetch('/editpost', {
-      method: 'GET',
-      //body: JSON.stringify({ title, content }),
+      method: 'POST',
+      body: JSON.stringify({ postid }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
