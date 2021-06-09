@@ -41,7 +41,8 @@ router.post('/editpost', (req,res) => {
 
 router.post('/edit/', async (req, res) => {
   //res.render('editpost');
-  varPostId = req.body.postid;
+  //varPostId = req.body.postid;
+  req.session.postId = req.body.postid;
   console.log("varpostid====>"+varPostId);
   res.render('editpost');
 });
@@ -64,7 +65,8 @@ router.put('/edit/', async (req, res) => {
       {
         // Gets a book based on the book_id given in the request parameters
         where: {
-          id: varPostId,
+          id: req.session.postId
+          //id: varPostId,
         },
       }
     )
@@ -147,15 +149,17 @@ router.post('/', async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
+router.post('/delete/', async (req, res) => {
+  console.log("%%%%%%you entered the delete route%%%%%%%");
+  console.log("%%%%%%req.session.postId: "+req.session.postId);
   try {
     const postData = await Post.destroy({
       where: {
-        id: req.params.id,
-        member_id: req.session.member_id,
+        id: req.session.postId,
+        //member_id: req.session.member_id,
       },
-    });
-
+    }); 
+    
     if (!postData) {
       res.status(404).json({ message: 'post not found, may be an issue with id entered in url' });
       return;

@@ -1,25 +1,25 @@
 
   
-    <div class="container-fluid p-0 m-0">
-        <section class="d-flex justify-content-between" style="border: 4px solid #522921">
+    <div class="container-fluid p-0 m-0 attrdata" data-postid = {{id}}>
+        <section class="d-flex justify-content-between attrdata" style="border: 4px solid #522921" data-postid = {{id}}>
             <!--this div is for the header of the posts-->
 
             
 
-            <div class="container-fluid" style="background-color:#522921; color: white">
-                <div class="row p-0 m-0">
-                    <div class="col p-0 m-0">
-                        <div class="d-flex justify-content-start">
-                            <h3>{{title}}</h3>
+            <div class="container-fluid attrdata" style="background-color:#522921; color: white" data-postid = {{id}}>
+                <div class="row p-0 m-0 attrdata" data-postid = {{id}}>
+                    <div class="col p-0 m-0 attrdata" data-postid = {{id}}>
+                        <div class="d-flex justify-content-start attrdata" data-postid = {{id}}>
+                            <h3 class="attrdata" data-postid = {{id}}>{{title}}</h3>
                         </div>
                         
                     </div>
 
-                    <div class="col p-0 m-0">
-                        <div class="d-flex justify-content-end p-0 m-0">
-                            <div class="d-inline-flex p-0 m-0">
-                               <p>posted by: {{member.username}}</p> 
-                               <p>date: {{date_created}}</p>
+                    <div class="col p-0 m-0 attrdata" data-postid = {{id}}>
+                        <div class="d-flex justify-content-end p-0 m-0 attrdata" data-postid = {{id}}>
+                            <div class="d-inline-flex p-0 m-0 attrdata" data-postid = {{id}}>
+                               <p class="attrdata" data-postid = {{id}}>posted by: {{member.username}}</p> 
+                               <p class="attrdata" data-postid = {{id}}>date: {{date_created}}</p>
                             </div>
                             
                         </div>
@@ -28,7 +28,7 @@
             </div>
 
         </section>
-        <main class= "mx-5 my-5">{{post_content}}</main>
+        <main class= "mx-5 my-5 attrdata" data-postid = {{id}}>{{post_content}}</main>
         
     </div>
 

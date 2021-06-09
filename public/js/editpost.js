@@ -1,43 +1,3 @@
-//this event viewer watch's if member hits the new post button
-
-//var mainEl = document.getElementById("main");
-
-/*
-const editFormHandler = async (event) => {
-    //prevents default form behavior from happening
-    event.preventDefault();
-
-    const title="yes";
-    const content="yes";
-    if (title && content) {
-      // Send a POST request to the api 
-      const response = await fetch('/editpost', {
-        method: 'POST',
-        body: JSON.stringify({ title, content }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      if (response.ok) {
-          console.log("!!!!!!!!!!!!!!");
-          console.log("response: "+response);
-          console.log("!!!!!!!!!!!!!!");
-        document.location.replace('/editpost');//check this 
-      } else {
-        console.log("your code failed for the create button. check out ./js/dashboard.js line 65");
-        alert(response.statusText);
-      }
-    }
-  };
-  
-
-document
-  .querySelector('#main')
-  .addEventListener('click', editFormHandler);*/
-
-  /*
-document
-.querySelector('#update')
-.addEventListener('click', updateFormHandler);*/
-  
 
 
 //work here
@@ -93,14 +53,15 @@ const updateFormHandler = async (event) => {
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!
   const deleteFormHandler = async (event) => {
     //prevents default form behavior from happening
+    console.log("you entered the deleteformhandler");
     event.preventDefault();
   
-    const title = document.querySelector('#title').value.trim();
-    const content = document.querySelector('#content').value.trim();
+    const title = "test";
+    const content = "test";
   
     if (title && content) {
       // Send a POST request to the api 
-      const response = await fetch('/api/post/', {
+      const response = await fetch('/api/post/delete/', {
         method: 'POST',
         body: JSON.stringify({ title, content }),
         headers: { 'Content-Type': 'application/json' },
@@ -116,7 +77,7 @@ const updateFormHandler = async (event) => {
   
   document
     .querySelector('#delete')
-    .addEventListener('click', createFormHandler);
+    .addEventListener('click', deleteFormHandler);
 
     
   ////////////////////////////////////////////////////////////////////////////////////////////////////
