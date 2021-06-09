@@ -2,13 +2,18 @@ const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 
 
-router.post('/', (req,res) => {
+router.post('/', async (req,res) => {
     req.session.postId = req.body.postid;
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!entered the post api/comment/ route!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    res.render('comment', {logged_in: req.session.logged_in});
+
+    const post = await Post.findOne({ where: { 
+        id: req.session.postId
+      } });
+    
+    res.render('comment', {post});
     //res.redirect('/dashboard');
 });
 
+//deleteme
 router.get('/', (req,res) => {
     
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -17,7 +22,7 @@ router.get('/', (req,res) => {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
     res.render('comment', {logged_in: req.session.logged_in});
 });
-
+//deleteme
 router.post('/edit/', async (req, res) => {
     //res.render('editpost');
     //varPostId = req.body.postid;

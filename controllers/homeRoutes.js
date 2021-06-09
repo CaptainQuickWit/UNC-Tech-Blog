@@ -138,13 +138,23 @@ router.get('/member', withAuth, async (req, res) => {
   }
 });
 
-router.get('/comment', (req,res) => {
+router.get('/comment', async (req,res) => {
     
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   console.log("!!!!!!!!!!!!!!!!!!!!!!!rendeirng the ocmment route !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
    
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
-  res.render('comment', {logged_in: req.session.logged_in});
+
+  
+    const post = await Post.findOne({ where: { 
+        id: req.session.postId
+      } });
+      console.log(post); 
+  res.render('comment', {post});
+
+  
+  //res.render('comment', {logged_in: req.session.logged_in});
+  //res.redirect('comment');
 });
 
 // RENDERS "LOGIN" PAGE (login.handlebars)
