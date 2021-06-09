@@ -23,8 +23,8 @@ const updateFormHandler = async (event) => {
   
   };
   
-  
-  
+
+      
       document
       .querySelector('#update')
       .addEventListener('submit', updateFormHandler);

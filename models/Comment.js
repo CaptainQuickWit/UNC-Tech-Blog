@@ -27,7 +27,7 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    /*
+    
     member_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -35,7 +35,7 @@ Comment.init(
         key: 'id',
       },
     },
-    */
+    
 
   },
   {

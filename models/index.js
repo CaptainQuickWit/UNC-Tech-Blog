@@ -22,7 +22,22 @@ Comment.belongsTo(Post, {
     onDelete: 'CASCADE'
 });
 
+/////////new stuff////
+Comment.belongsTo(Member, {
+  foreignKey: 'member_id',
+  onDelete: 'CASCADE'
+});
 
+Member.hasMany(Comment, {
+  foreignKey: 'member_id',
+  onDelete: 'CASCADE'
+});
+
+Post.hasMany(Comment, {
+  foreignKey: 'post_id',
+  onDelete: 'CASCADE'
+});
+/////////new stuff////
 module.exports = {Member,Post,Comment};
 
 /*

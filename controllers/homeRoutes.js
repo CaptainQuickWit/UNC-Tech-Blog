@@ -137,6 +137,16 @@ router.get('/member', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/comment', (req,res) => {
+    
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!rendeirng the ocmment route !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
+   
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
+  res.render('comment', {logged_in: req.session.logged_in});
+});
+
 // RENDERS "LOGIN" PAGE (login.handlebars)
 router.get('/login', (req, res) => {
   console.log('you have entered the login route. Logged in: ', req.session.logged_in);
