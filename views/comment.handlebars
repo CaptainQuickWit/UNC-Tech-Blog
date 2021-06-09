@@ -21,8 +21,8 @@
                     <div class="col p-0 m-0 attrdata" data-postid = {{post.dataValues.id}}>
                         <div class="d-flex justify-content-end p-0 m-0 attrdata" data-postid = {{post.dataValues.id}}>
                             <div class="d-inline-flex p-0 m-0 attrdata" data-postid = {{post.dataValues.id}}>
-                               <p class="attrdata" data-postid = {{post.dataValues.id}}>posted by: {{post.dataValues.member_username}}</p> 
-                               <p class="attrdata" data-postid = {{post.dataValues.id}}>date: {{post.dataValues.date_created}}</p>
+                               <p class="attrdata" data-postid = {{post.dataValues.id}} id="postBy">posted by: {{post.dataValues.member_username}}</p> 
+                               <p class="attrdata" data-postDate= {{post.dataValues.date_created}}id="postDate"> on: {{post.dataValues.date_created}}</p>
                             </div>
                             
                         </div>
@@ -45,12 +45,12 @@
       <form class="form login-form" id="update">
 
         <label>Comment:</label>
-        <div class="form-group" >
+        <div class="form-group" id="comment" data-postid = {{post.dataValues.id}}>
 
             <textarea class = "container-fluid"rows="5" id="content"></textarea>
         </div>
         
-        <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit">Update</button>   
+        <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit">Comment</button>   
         
       </form>
 

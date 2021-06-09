@@ -35,7 +35,7 @@ router.post('/new', async (req, res) => {
   
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!entered the api/comment/new route !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-     
+     console.log("{ date_created, content, post_id}: " +req.body);
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
   
     try {

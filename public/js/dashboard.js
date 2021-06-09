@@ -8,7 +8,7 @@ const editFormHandler = async (event) => {
   var postid = element.getAttribute("data-postid");
       console.log("getAttribute: "+postid);
 
-
+  
   const title="yes";
   const content="yes";
   if (title && content) {
