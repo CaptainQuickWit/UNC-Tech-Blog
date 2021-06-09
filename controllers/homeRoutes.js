@@ -176,7 +176,7 @@ router.get('/comment', async (req,res) => {
     
   });
     
-
+    
     const commentAll = commentAllData.map((comment) => comment.get({ plain: true }));
 
     res.render('comment', {post,commentAll});

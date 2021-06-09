@@ -1,22 +1,22 @@
 
-    <div class="container-fluid p-0 m-0 " style="border: 4px solid #522921">
-        <section class="d-flex justify-content-between m-0 p-0" style="border: 4px solid #522921">
+    <div class="container-fluid p-0 m-0 attrdata" style="border: 4px solid #522921" data-commentId = {{id}}>
+        <section class="d-flex justify-content-between m-0 p-0 attrdata" style="border: 4px solid #522921" data-commentId = {{id}}>
             <!--this div is for the header of the posts-->
 
             
 
-            <div class="container-fluid" style="background-color:#522921; color: white">
-                <div class="row p-0 m-0 attrdata">
-                    <div class="col p-0 m-0 attrdata">
-                        <div class="d-flex justify-content-start ">
-                            <h3 class="attrdata"></h3><!-- was a title-->
+            <div class="container-fluid attrdata" style="background-color:#522921; color: white" data-commentId = {{id}}>
+                <div class="row p-0 m-0 attrdata" data-commentId = {{id}}>
+                    <div class="col p-0 m-0 attrdata"data-commentId = {{id}}>
+                        <div class="d-flex justify-content-start "data-commentId = {{id}}>
+                            <h3 class="attrdata" data-commentId = {{id}}></h3><!-- was a title-->
                         </div>
                         
                     </div>
 
-                    <div class="col p-0 m-0 ">
-                        <div class="d-flex justify-content-end p-0 m-0 ">
-                            <div class="d-inline-flex p-0 m-0 " >
+                    <div class="col p-0 m-0 attrdata "data-commentId = {{id}}>
+                        <div class="d-flex justify-content-end p-0 m-0 attrdata"data-commentId = {{id}}>
+                            <div class="d-inline-flex p-0 m-0 attrdata " data-commentId = {{id}}>
                                <p></p> 
                                <p></p>
                             </div>
@@ -28,14 +28,14 @@
 
         </section>
 
-        <main class= "mx-5 my-5">
-            <div class="d-flex justify-content-start">
+        <main class= "mx-5 my-5 attrdata"data-commentId = {{id}}>
+            <div class="d-flex justify-content-start attrdata"data-commentId = {{id}}>
 
                 {{comment}}
 
             </div>
 
-            <div class = "d-flex justify-content-start">
+            <div class = "d-flex justify-content-start attrdata" data-commentId = {{id}}>
                 ---- {{member.username}} on {{date_created}}
             </div>
 

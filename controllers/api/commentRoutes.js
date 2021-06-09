@@ -1,6 +1,13 @@
 const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 
+//work here
+router.post('/edit', async (req,res) => {
+    req.session.commentId = req.body.commentId;
+    console.log("req.body.commentId====>"+req.body.commentId+"<=================req.body.commentId====>");
+    res.render('comment', {logged_in: req.session.logged_in});
+    //res.redirect('/dashboard');
+});
 
 router.post('/', async (req,res) => {
     req.session.postId = req.body.postid;
@@ -27,7 +34,7 @@ router.post('/edit/', async (req, res) => {
     //res.render('editpost');
     //varPostId = req.body.postid;
     req.session.postId = req.body.postid;
-    console.log("varpostid comment route====>"+varPostId);
+    //console.log("varpostid comment route====>"+varPostId);
     res.render('comment', {logged_in: req.session.logged_in});
 });
 
@@ -119,7 +126,7 @@ router.post('/edit/', async (req, res) => {
       } });
 
       
-    console.log("varpostid====>"+varPostId);
+    //console.log("varpostid====>"+varPostId);
     res.render('editpost');
   });
   
