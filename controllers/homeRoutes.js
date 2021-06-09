@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Member,Post} = require('../models');
+const { Comment, Member,Post} = require('../models');
 //later bring in Comment
 //const { Comment} = require('../models');
 
@@ -70,6 +70,7 @@ router.get('/', async (req, res) => {
         },
       ],
     });
+
     // Serialize data so the template can read it. This is the "posts" we use at 
     const posts = postData.map((post) => post.get({ plain: true }));
     res.render('home', { //changed from dashboard to home
@@ -137,7 +138,7 @@ router.get('/member', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//workhere
 router.get('/comment', async (req,res) => {
     
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -145,12 +146,45 @@ router.get('/comment', async (req,res) => {
    
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
 
-  
+  try {
+    //add serilization later
     const post = await Post.findOne({ where: { 
-        id: req.session.postId
-      } });
-      console.log(post); 
-  res.render('comment', {post});
+      id: req.session.postId,
+    }, 
+    include: [
+      {
+        model: Member,
+        attributes: ['username','id'],
+      },
+    ],
+  
+    },
+      
+    );
+    console.log(post); 
+    
+    const commentAllData = await Comment.findAll({ where: {
+      post_id: req.session.postId
+
+    },
+    include: [
+      {
+        model: Member,
+        attributes: ['username','id'],
+      },
+    ],
+    
+  });
+    
+
+    const commentAll = commentAllData.map((comment) => comment.get({ plain: true }));
+
+    res.render('comment', {post,commentAll});
+    //res.render('comment', {post}, {commentAll});
+  } catch (err) {
+    res.status(500);
+  }
+    
 
   
   //res.render('comment', {logged_in: req.session.logged_in});

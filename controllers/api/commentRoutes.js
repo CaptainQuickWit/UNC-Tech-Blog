@@ -35,12 +35,12 @@ router.post('/new', async (req, res) => {
   
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!entered the api/comment/new route !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-     console.log("{ date_created, content, post_id}: " +req.body);
+    console.log("content " + JSON.stringify(req.body));
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
-  
+    let newComment;
     try {
-      const newPost = await Comment.create({
-        title: req.body.title,
+      newComment = await Comment.create({
+        
         comment: req.body.content,
         //member_username: req.member_username,
         member_id: req.session.member_id,
@@ -53,33 +53,36 @@ router.post('/new', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!made it past the try catch  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-     
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
-  
+    console.log("newComment===========>"+ JSON.stringify(newComment));
+    
+    
     const postData = await Post.findOne({ where: { 
-      title: req.body.title,
-      post_content: req.body.content ,
-      post_id: req.session.postId
+      id: req.session.postId
     } });
   
+    /* uncomment this later
       if (!postData) {
         res
           .status(400)
           .json({ message: 'looks like the post data wasnt stored in the mysql database ' });
         return;
-      }
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-    console.log(JSON.stringify(postData));
-    console.log(req.session.username);
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-    res.redirect('/dashboard');
-  });
+      }*/
+
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!made it past the try catch  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
+        console.log("postData===========>"+ JSON.stringify(postData));
+    
+        const allComments = await Comment.findAll({ where: { 
+        post_id: req.session.postId
+         } });
+
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!made it past the try catch  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
+        console.log("allComments===========>"+ JSON.stringify(allComments));
+         
+        res.redirect('/comment');
+        //res.render('/comment',{allComments});
+  });   
 
 
 
