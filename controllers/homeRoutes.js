@@ -30,7 +30,7 @@ router.post('/editpost', (req,res) => {
     
     console.log("!!!!!rendering!!!!!!"); 
     varPostID = req.body.postid;
-    console.log("varpostid=====>" + varPostID); 
+     
     res.render('editpost', {logged_in: req.session.logged_in});
     
     return;
@@ -46,7 +46,7 @@ router.get('/editpost', (req,res) => {
   
   if (req.session.logged_in) {
    console.log("!!!!!rendering!!!!!!"); 
-    res.render('editpost', {logged_in: req.session.logged_in});  
+    res.render('editpost', {logged_in: req.session.logged_in,dashboard:true});  
     return;
   }
 
@@ -61,7 +61,7 @@ router.get('/newpost', (req,res) => {
   if (req.session.logged_in) {
     
     
-    res.render('newpost', {logged_in: req.session.logged_in});
+    res.render('newpost', {logged_in: req.session.logged_in, dashboard: true});
       
         
       
@@ -127,7 +127,8 @@ router.get('/dashboard', async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
     res.render('dashboard', {
       posts,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      dashboard:true
     });
   } catch (err) {
     res.status(500).json(err);
@@ -194,7 +195,7 @@ router.get('/comment', async (req,res) => {
     
     const commentAll = commentAllData.map((comment) => comment.get({ plain: true }));
 
-    res.render('comment', {post,commentAll});
+    res.render('comment', {post,commentAll,logged_in: req.session.logged_in});//correct code
     //res.render('comment', {post}, {commentAll});
   } catch (err) {
     res.status(500);

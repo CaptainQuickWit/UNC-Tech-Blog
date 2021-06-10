@@ -14,7 +14,11 @@ router.post('/', async (req,res) => {
     const post = await Post.findOne({ where: { 
         id: req.session.postId
       } });
-    res.render('comment', {post});
+
+      
+      //hereboi
+    res.render('comment', {post, logged_in: req.session.logged_in});
+    //res.redirect('/comment');
 });
 
 //deleteme
@@ -32,11 +36,15 @@ router.post('/edit/', async (req, res) => {
 
 router.post('/new', async (req, res) => {
   
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!entered the api/comment/new route !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-    console.log("content " + JSON.stringify(req.body));
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
+    
+    
     let newComment;
+    //if user not logged in they cannot add comment
+    if (!req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+
     try {
       newComment = await Comment.create({
         
@@ -119,7 +127,12 @@ router.post('/edit/', async (req, res) => {
 
       
     //console.log("varpostid====>"+varPostId);
-    res.render('editpost');
+    if (req.session.logged_in) {
+        res.render('editpost');
+    } else {
+        res.render('/');
+    }
+    
   });
   
   
