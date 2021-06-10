@@ -4,9 +4,8 @@ const { Post, Comment } = require('../../models');
 //work here
 router.post('/edit', async (req,res) => {
     req.session.commentId = req.body.commentId;
-    console.log("req.body.commentId====>"+req.body.commentId+"<=================req.body.commentId====>");
     res.render('comment', {logged_in: req.session.logged_in});
-    //res.redirect('/dashboard');
+    
 });
 
 router.post('/', async (req,res) => {
@@ -15,26 +14,19 @@ router.post('/', async (req,res) => {
     const post = await Post.findOne({ where: { 
         id: req.session.postId
       } });
-    
     res.render('comment', {post});
-    //res.redirect('/dashboard');
 });
 
 //deleteme
 router.get('/', (req,res) => {
     
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!entered the get api/comment/ route !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");  
-     
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
     res.render('comment', {logged_in: req.session.logged_in});
 });
 //deleteme
 router.post('/edit/', async (req, res) => {
-    //res.render('editpost');
-    //varPostId = req.body.postid;
+    
     req.session.postId = req.body.postid;
-    //console.log("varpostid comment route====>"+varPostId);
+    
     res.render('comment', {logged_in: req.session.logged_in});
 });
 
@@ -133,8 +125,15 @@ router.post('/edit/', async (req, res) => {
   
   router.put('/edit/', async (req, res) => {
     //res.render('editpost');
-  
+    
+
     try {
+        const comment = Comment.findOne({
+            where: {
+                id: req.session.commentId
+            }
+        });
+
       Comment.update(
         {
           // All the fields you can update and the data attached to the request body.
@@ -145,9 +144,11 @@ router.post('/edit/', async (req, res) => {
           
         },
         {
-          // Gets a book based on the book_id given in the request parameters
+          
           where: {
-            id: req.session.commentId
+            id: req.session.commentId,
+            //people can only edit their own comment
+            member_id:req.session.member_id
             //id: varPostId,
           },
         }
@@ -160,6 +161,8 @@ router.post('/edit/', async (req, res) => {
           console.log(err);
           res.json(err);
         });
+
+
   
     } catch (err) {
       console.log(err);
@@ -174,22 +177,29 @@ router.post('/edit/', async (req, res) => {
   
   
   router.delete('/delete/', async (req, res) => {
-    console.log("%%%%%%you entered the delete route%%%%%%%");
-    console.log("%%%%%%req.session.postId: "+req.session.postId);
+    
     try {
-      const postData = await Comment.destroy({
+      const commentData = await Comment.destroy({
         where: {
           id: req.session.commentId,
-          //member_id: req.session.member_id,
+          //user cannot destroy other peoples comments
+          member_id:req.session.member_id
         },
+      }).then((updatedComment) => {
+          
+        res.json(updatedComment);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
       }); 
       
-      if (!postData) {
-        res.status(404).json({ message: 'post not found in the database' });
+      if (!commentData) {
+        res.status(404).json({ message: 'post not found in the database or you tried deleting a comment that wasnt yours' });
         return;
       }
       
-      //req.session.commentId = req.session.commentId;
+      
       
       res.status(200).json(postData);
     } catch (err) {
