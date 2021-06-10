@@ -50,7 +50,7 @@ const updateFormHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
-        document.location.replace('/dashboard');//check this 
+        document.location.replace('/comment');//check this 
       } else {
         console.log("your code failed for the create button. check out ./js/dashboard.js line 65");
         alert(response.statusText);
