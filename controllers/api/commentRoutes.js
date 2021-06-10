@@ -173,13 +173,13 @@ router.post('/edit/', async (req, res) => {
   
   
   
-  router.post('/delete/', async (req, res) => {
+  router.delete('/delete/', async (req, res) => {
     console.log("%%%%%%you entered the delete route%%%%%%%");
     console.log("%%%%%%req.session.postId: "+req.session.postId);
     try {
-      const postData = await Post.destroy({
+      const postData = await Comment.destroy({
         where: {
-          id: req.session.postId,
+          id: req.session.commentId,
           //member_id: req.session.member_id,
         },
       }); 
@@ -188,7 +188,9 @@ router.post('/edit/', async (req, res) => {
         res.status(404).json({ message: 'post not found in the database' });
         return;
       }
-  
+      
+      //req.session.commentId = req.session.commentId;
+      
       res.status(200).json(postData);
     } catch (err) {
       res.status(500).json(err);

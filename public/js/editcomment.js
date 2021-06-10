@@ -45,7 +45,7 @@ const updateFormHandler = async (event) => {
     if (title && content) {
       // Send a POST request to the api 
       const response = await fetch('/api/comment/delete/', {
-        method: 'POST',
+        method: 'DELETE',
         body: JSON.stringify({ }),
         headers: { 'Content-Type': 'application/json' },
       });
