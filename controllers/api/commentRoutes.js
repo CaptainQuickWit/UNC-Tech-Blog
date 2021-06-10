@@ -135,11 +135,10 @@ router.post('/edit/', async (req, res) => {
     //res.render('editpost');
   
     try {
-      Post.update(
+      Comment.update(
         {
           // All the fields you can update and the data attached to the request body.
-          title: req.body.title,
-          post_content: req.body.content,
+          comment: req.body.content
           
           
           
@@ -148,14 +147,14 @@ router.post('/edit/', async (req, res) => {
         {
           // Gets a book based on the book_id given in the request parameters
           where: {
-            id: req.session.postId
+            id: req.session.commentId
             //id: varPostId,
           },
         }
       )
-        .then((updatedPost) => {
+        .then((updatedComment) => {
           
-          res.json(updatedPost);
+          res.json(updatedComment);
         })
         .catch((err) => {
           console.log(err);
