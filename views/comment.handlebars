@@ -1,9 +1,9 @@
 <div class="d-flex flex-column justify-content-center p-5 m-5" "style: min-height: 200px;" >
     
-    <!-- only 1 post will be rendered as only one is being returned-->
     
-
-        <div class="container-fluid p-0 m-0 attrdata" style="border: 4px solid #522921" data-postid = {{post.dataValues.id}}>
+    
+        <!-- the post-->
+        <div class="container-fluid p-0 m-5 attrdata" style="border: 4px solid #522921" data-postid = {{post.dataValues.id}}>
         <section class="d-flex justify-content-between attrdata" style="border: 4px solid #522921" data-postid = {{post.dataValues.id}}>
             <!--this div is for the header of the posts-->
 
@@ -36,42 +36,35 @@
         <main class= "mx-5 my-5 attrdata" data-postid = {{post.dataValues.id}} >{{post.dataValues.post_content}}</main>
         
     </div>
-    
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-
-    <section class="p-10" id="main">
+   
+   <!-- long list of comments-->
+    <section class="m-5" id="main">
         {{#each commentAll as |comment|}}
-            {{> comment-all}}
+        {{> comment-all}}
         {{/each}}
     </section>
     
-    <div class="container-fluid">
-    <section class="d-flex flex-column justify-content-between" style="border: 4px solid #522921">
-    <h3 style="background-color:#522921; color: white"></h3> <!-- nothing will be in the title -->
-    <!--this div below is just for spacing only -->
-    <div class="mx-4">
-      <!--this div above is just for spacing only -->
-      <form class="form login-form" id="update">
+    <!-- add a comment-->
+    <div class="container-fluid m-5">
+        <section class="d-flex flex-column justify-content-between" style="border: 4px solid #522921">
+        <h3 style="background-color:#522921; color: white"></h3> <!-- nothing will be in the title -->
+        <!--this div below is just for spacing only -->
+        <div class="mx-4">
+        <!--this div above is just for spacing only -->
+        <form class="form login-form" id="update">
 
-        <label>Comment:</label>
-        <div class="form-group" id="comment" data-postid = {{post.dataValues.id}}>
+            <label>Comment:</label>
+            <div class="form-group" id="comment" data-postid = {{post.dataValues.id}}>
 
-            <textarea class = "container-fluid"rows="5" id="content"></textarea>
+                <textarea class = "container-fluid"rows="5" id="content"></textarea>
+            </div>
+        
+            <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit">Comment</button>   
+        
+        </form>
+
         </div>
-        
-        <button class="container-fluid p-2" style="background-color:#5E5B5A; color: white; border-radius: 15px;" type="submit">Comment</button>   
-        
-      </form>
-
-    </div>
-    </section>
+        </section>
     </div>
       
     
