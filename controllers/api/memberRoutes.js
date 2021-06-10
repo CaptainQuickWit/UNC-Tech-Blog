@@ -26,6 +26,9 @@ router.post('/login', async (req, res) => {
       req.session.logged_in = true;
       req.session.postId = null;
       req.session.commentId = null;
+      req.session.home = false;
+      req.session.dashboard = false;
+      req.session.comments = false;
       res.json({ member: memberData, message: 'Login: successful' });
     });
   } catch (err) {
