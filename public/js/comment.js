@@ -66,7 +66,7 @@ const commentFormHandler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
-        document.location.replace('/dashboard');//change to comment
+        document.location.replace('/editcomment');//change to comment
       } else {
         console.log("your code failed for the create button. check out ./js/dashboard.js line 65");
         alert(response.statusText);

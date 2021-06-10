@@ -7,6 +7,21 @@ const { Comment, Member,Post} = require('../models');
 //bring in auth later
 //bring in models later 
 var varPostID;
+
+router.get('/editcomment', (req,res) => {
+
+  if (req.session.logged_in) {
+    
+    console.log("!!!!!rendering!!!!!!"); 
+    varPostID = req.body.postid;
+    
+    res.render('editcomment', {logged_in: req.session.logged_in});
+    
+    return;
+  }
+
+  res.redirect('/');
+});
 router.post('/editpost', (req,res) => {
 
 
